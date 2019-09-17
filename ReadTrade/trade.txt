@@ -1,0 +1,4 @@
+Trade: {
+    type={COMMODITY_SPOT}
+    price={125.84}
+}
