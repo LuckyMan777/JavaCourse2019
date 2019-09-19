@@ -1,71 +1,36 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-
-class Trade {
-    TradeType type;
-    double price;
-
-    Trade(TradeType type, double price) {
-        this.type = type;
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Trade{" +
-                "type=" + type +
-                ", price=" + price +
-                '}';
-    }
-}
 
 enum TradeType {
     FX_SPOT {
         @Override
-        public TradeType createTrade(double price) {
-            this.price = price;
-            return this;
+        public Trade createTrade(double price) {
+            return new FX_SPOT(price);
         }
     }, BOND {
         @Override
-        public TradeType createTrade(double price) {
-            this.price = price;
-            return this;
+        public Trade createTrade(double price) {
+            return new BOND(price);
         }
     }, COMMODITY_SPOT {
         @Override
-        public TradeType createTrade(double price) {
-            this.price = price;
-            return this;
+        public Trade createTrade(double price) {
+            return new COMMODITY_SPOT(price);
         }
     }, IR_SWAP {
         @Override
-        public TradeType createTrade(double price) {
-            this.price = price;
-            return this;
+        public Trade createTrade(double price) {
+            return new IR_SWAP(price);
         }
     };
 
-    public abstract TradeType createTrade(double price);
-
-    @Override
-    public String toString() {
-        return "TradeType{" +
-                "this.name=" + this.name() +
-                ", price=" + price +
-                '}';
-    }
-
-    double price;
+    public abstract Trade createTrade(double price);
 }
 
 
 public class ParseTradeVar2 {
     static void createTrade(TradeInfo info) throws IOException {
-        TradeType tr = TradeType.valueOf(info.type).createTrade(info.price);
-        TradeType tr2 = TradeType.valueOf(info.type).createTrade(9888);
+        Trade tr = TradeType.valueOf(info.type).createTrade(info.price);
         //Trade tr = new Trade(TradeType.valueOf(info.type), info.price);
         System.out.println(tr.toString());
-        System.out.println(tr2.toString());
     }
 }

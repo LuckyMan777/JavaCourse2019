@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(args[0]));
-        TradeInfo info = TradeInfo.readTrade(br);
+        TradeInfo info = new TradeInfo(br);
 
         System.out.println("\nUsing first parsing method: ");
         ParseTradeVar1.createTrade(info);
