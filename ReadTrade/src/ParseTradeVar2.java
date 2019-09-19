@@ -1,3 +1,4 @@
+import java.io.BufferedReader;
 import java.io.IOException;
 
 class Trade {
@@ -60,10 +61,11 @@ enum TradeType {
 
 
 public class ParseTradeVar2 {
-    static void createTrade(String fname) throws IOException {
-        ReadTradeInfo info = ReadTradeInfo.readTrade(fname);
+    static void createTrade(TradeInfo info) throws IOException {
         TradeType tr = TradeType.valueOf(info.type).createTrade(info.price);
+        TradeType tr2 = TradeType.valueOf(info.type).createTrade(9888);
         //Trade tr = new Trade(TradeType.valueOf(info.type), info.price);
         System.out.println(tr.toString());
+        System.out.println(tr2.toString());
     }
 }

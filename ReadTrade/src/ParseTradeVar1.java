@@ -1,3 +1,4 @@
+import java.io.BufferedReader;
 import java.io.IOException;
 
 class FX_SPOT {
@@ -78,8 +79,7 @@ class IR_SWAP {
 
 public class ParseTradeVar1 {
 
-    static void createTrade(String fname) throws IOException, IllegalStateException {
-        ReadTradeInfo info = ReadTradeInfo.readTrade(fname);
+    static void createTrade(TradeInfo info) throws IOException, IllegalStateException {
         switch (info.type) {
             case ("FX_SPOT"):
                 FX_SPOT trade1 = new FX_SPOT(info.price);

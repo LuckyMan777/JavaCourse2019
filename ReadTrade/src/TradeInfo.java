@@ -1,37 +1,35 @@
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
-public class ReadTradeInfo {
+public class TradeInfo {
     String type;
     double price;
 
-    public ReadTradeInfo(String type, double price) {
+    public TradeInfo(String type, double price) {
         this.type = type;
         this.price = price;
     }
 
-    static ReadTradeInfo readTrade(String fname) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(fname));
+    static TradeInfo readTrade(BufferedReader stream) throws IOException {
         String type = "FX_SPOT";
         String price = "0.0";
         try {
-            String line = br.readLine();
+            String line = stream.readLine();
 
-            line = br.readLine();
+            line = stream.readLine();
             int firstBracket = line.indexOf("{");
             int lastBracket = line.indexOf("}");
             type = line.substring(firstBracket + 1, lastBracket);
 
-            line = br.readLine();
+            line = stream.readLine();
             firstBracket = line.indexOf("{");
             lastBracket = line.indexOf("}");
             price = line.substring(firstBracket + 1, lastBracket);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            br.close();
+            stream.close();
         }
-        return new ReadTradeInfo(type, Double.parseDouble(price));
+        return new TradeInfo(type, Double.parseDouble(price));
     }
 }
