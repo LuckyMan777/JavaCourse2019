@@ -1,20 +1,40 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Main {
 
-    public static void main(String[] args) {
-        MyHashMap<Integer, Integer> m = new MyHashMap<>(1000);
+    private static void testMyHashMap(int count) {
+        Random r = new Random();
+        ArrayList<Integer> nums = new ArrayList<>();
+        for (int i = 0; i < count; ++i) {
+             nums.add(r.nextInt());
+        }
+    }
 
-        for (int i = 0; i < 20; ++i) {
-            m.put(Map.entry(i * 500, i * 7));
+    public static void main(String[] args) {
+        MyHashMap<Integer, Integer> m = new MyHashMap<>(5);
+
+        for (int i = 0; i < 10; ++i) {
+            m.put(i * 3, i * 7);
         }
-        m.print_vals();
-        for (int i = 0; i < 20; ++i) {
-            int real_ind = m.get_real_index(i * 500);
-            //System.out.println("key = " + i * 500 + " ind = " + real_ind);
-            System.out.println(m.get(i * 500) == i * 7);
+
+        System.out.println(" Before remove -".repeat(5));
+        System.out.println(m.size());
+        m.printVals();
+        for (int i = 0; i < 5; ++i) {
+            m.remove(i * 3);
         }
+        System.out.println(" After remove -".repeat(5));
+        System.out.println(m.size());
+        m.printVals();
+        for (int i = 5; i < 10; ++i) {
+            System.out.println(m.contains(i * 3));
+        }
+        System.out.println(m.size());
+
     }
 }
