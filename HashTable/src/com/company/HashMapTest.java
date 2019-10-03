@@ -1,16 +1,18 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MyHashMapTest {
+class HashMapTest {
 
     private final int initialCapacity = 1000000;
     private final int count = 10000000;
-    MyHashMap<Integer, Integer> map;
+    HashMap<Integer, Integer> map;
     ArrayList<Integer> uniqueNums;
     private ArrayList<Integer> nums = new ArrayList<>();
 
@@ -21,7 +23,7 @@ class MyHashMapTest {
             nums.add(r.nextInt() % 10);
         }
         uniqueNums = (ArrayList) nums.stream().distinct().collect(Collectors.toList());
-        map = new MyHashMap<>(initialCapacity);
+        map = new HashMap<>(initialCapacity);
         for (Integer num : nums) {
             map.put(num, num * 3);
         }
@@ -47,7 +49,7 @@ class MyHashMapTest {
     @org.junit.jupiter.api.Test
     void contains() {
         for (int i = 0; i < nums.size(); i++) {
-            assertTrue(map.contains(nums.get(i)));
+            assertTrue(map.containsKey(nums.get(i)));
         }
     }
 

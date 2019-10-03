@@ -1,8 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class Main {
@@ -11,7 +9,7 @@ public class Main {
         Random r = new Random();
         ArrayList<Integer> nums = new ArrayList<>();
         for (int i = 0; i < count; ++i) {
-             nums.add(r.nextInt());
+            nums.add(r.nextInt());
         }
     }
 
