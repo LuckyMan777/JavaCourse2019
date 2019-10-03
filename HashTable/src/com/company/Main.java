@@ -16,6 +16,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        MyHashMap<Integer, Integer> mm = new MyHashMap<Integer, Integer>();
+        System.out.println(mm.TOMBSTONE == null);
+
         MyHashMap<Integer, Integer> m = new MyHashMap<>(5);
 
         for (int i = 0; i < 10; ++i) {

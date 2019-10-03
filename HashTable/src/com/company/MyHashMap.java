@@ -1,6 +1,6 @@
 package com.company;
 
-import java.util.Map;
+import java.util.stream.IntStream;
 
 //Hash map
 public class MyHashMap<K, V> {
@@ -88,61 +88,58 @@ public class MyHashMap<K, V> {
             }
         }
     }*/
-    private Map.Entry<K, V>[] table;
+    public KeyValueHolder<K, V>[] table;
     private int size = 0;
     private final int initialCapacity = 100;
-    private final double loadFactor = 0.75;
+    private final double loadFactor = 0.7;
+    private final int multiplier = 2;
+    public final KeyValueHolder<K, V> TOMBSTONE = new KeyValueHolder<>(null, null);
 
 
     public MyHashMap() {
-        table = (Map.Entry<K, V>[]) new Map.Entry[initialCapacity];
+        table = (KeyValueHolder<K, V>[]) new KeyValueHolder[initialCapacity];
         /*for (int i = 0; i < initialCapacity; ++i) {
             table.add(null);
         }*/
     }
 
     public MyHashMap(int size) {
-        table = (Map.Entry<K, V>[]) new Map.Entry[size * 2];
+        table = (KeyValueHolder<K, V>[]) new KeyValueHolder[size * multiplier];
         /*for (int i = 0; i < size * 2; ++i) {
             table.add(null);
         }*/
     }
 
     private void reconstructTable() {
-        Map.Entry<K, V>[] newTable = (Map.Entry<K, V>[]) new Map.Entry[table.length * 2];
-        for (Map.Entry<K, V> kvEntry : table) {
-            if (kvEntry != null) {
+        KeyValueHolder<K, V>[] newTable = (KeyValueHolder<K, V>[]) new KeyValueHolder[table.length * 2];
+        for (KeyValueHolder<K, V> kvEntry : table) {
+            if ((kvEntry != null) && kvEntry != TOMBSTONE) {
                 putToArray(kvEntry.getKey(), kvEntry.getValue(), newTable);
             }
         }
         table = newTable;
     }
 
-    private int getIndexInArray(K key, Map.Entry<K, V>[] array) {
+    public int getNormalizedIndexInArray(K key, KeyValueHolder<K, V>[] array) {
         int hash = Math.abs(key.hashCode());
         return hash % array.length;
     }
 
-    private int getRealIndexInArray(K key, Map.Entry<K, V>[] array) {
-        int index = getIndexInArray(key, array);
-        while (array[index] != null) {
-            //System.out.println("  table.get(index).getKey() = " + table.get(index).getKey());
-            //System.out.println("  key = " + key);
-            //System.out.println("  (table.get(index).getKey().equals(key)): " + (table.get(index).getKey().equals(key)));
-            if (array[index].getKey().equals(key)) {
-                return index;
-            }
-            ++index;
-            if (index >= array.length) {
-                index = 0;
-            }
-        }
-        return index;
+    private int getNextProb(int index, KeyValueHolder<K, V>[] array) {
+        return (index + 1) % array.length;
     }
 
-    private void putToArray(K key, V value, Map.Entry<K, V>[] array) {
-        int index = getRealIndexInArray(key, array);
-        array[index] = Map.entry(key, value);
+    private void putToArray(K key, V value, KeyValueHolder<K, V>[] array) {
+        if (key == null) throw new IllegalArgumentException("Key is null");
+        int index = getNormalizedIndexInArray(key, array);
+        while (array[index] != null && array[index] != TOMBSTONE) {
+            if (array[index].getKey().equals(key)) {
+                array[index].setValue(value);
+                return;
+            }
+            index = getNextProb(index, array);
+        }
+        array[index] = new KeyValueHolder<>(key, value);
     }
 
     public void put(K key, V value) {
@@ -153,22 +150,46 @@ public class MyHashMap<K, V> {
     }
 
     public V get(K key) {
-        int index = getRealIndexInArray(key, table);
-        if (table[index].getKey().equals(key)) {
-            return table[index].getValue();
+        int index = getNormalizedIndexInArray(key, table);
+        int firstTombstone = -1;
+        while (table[index] != null) {
+            if ((table[index] == TOMBSTONE) && (firstTombstone == -1)) {
+                firstTombstone = index;
+            }
+            if ((table[index] != TOMBSTONE) && table[index].getKey().equals(key)) {
+                if (firstTombstone != -1) {
+                    table[firstTombstone] = table[index];
+                    table[index] = TOMBSTONE;
+                    return table[firstTombstone].getValue();
+                }
+                return table[index].getValue();
+            }
+            index = getNextProb(index, table);
         }
         return null;
     }
 
-    public void remove(K key) {
-        int index = getRealIndexInArray(key, table);
-        table[index] = null;
-        --size;
+    public V remove(K key) {
+        int index = getNormalizedIndexInArray(key, table);
+        while (table[index] != null) {
+            if ((table[index] != TOMBSTONE) && table[index].getKey().equals(key)) {
+                V value = table[index].getValue();
+                table[index] = TOMBSTONE;
+                --size;
+                return value;
+            }
+            index = getNextProb(index, table);
+        }
+        return null;
     }
 
     public boolean contains(K key) {
-        int index = getRealIndexInArray(key, table);
-        return table[index] != null;
+        int index = getNormalizedIndexInArray(key, table);
+        while (table[index] != null) {
+            if ((table[index] != TOMBSTONE) && table[index].getKey().equals(key)) return true;
+            index = getNextProb(index, table);
+        }
+        return false;
     }
 
     public int size() {

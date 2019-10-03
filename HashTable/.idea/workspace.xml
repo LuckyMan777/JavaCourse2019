@@ -131,10 +131,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MyHashMapTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Android JUnit.MyHashMapTest.remove" />
         <item itemvalue="JUnit.MyHashMapTest.remove" />
         <item itemvalue="Android JUnit.MyHashMapTest.size" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -151,7 +151,7 @@
       <workItem from="1569430049791" duration="3093000" />
       <workItem from="1569920234498" duration="1256000" />
       <workItem from="1569921669287" duration="5920000" />
-      <workItem from="1569946265562" duration="15069000" />
+      <workItem from="1569946265562" duration="26498000" />
     </task>
     <servers />
   </component>
@@ -176,126 +176,40 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>169</line>
-          <option name="timeStamp" value="29" />
+          <line>186</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>170</line>
-          <option name="timeStamp" value="30" />
+          <line>187</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="35" />
+          <line>188</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>130</line>
-          <option name="timeStamp" value="36" />
+          <line>189</line>
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="37" />
+          <line>191</line>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>132</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>133</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>135</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>136</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>138</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>139</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>123</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>168</line>
-          <properties class="com.company.MyHashMap" method="contains">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>120</line>
-          <properties class="com.company.MyHashMap" method="getIndexInArray">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/company/MyHashMap.java</url>
-          <line>125</line>
-          <properties class="com.company.MyHashMap" method="getRealIndexInArray">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="54" />
+          <url>file://$PROJECT_DIR$/src/com/company/MyHashMapTest.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="table.length" language="JAVA" />
+      </configuration>
       <configuration name="AndroidJUnit">
         <watch expression="table.length" language="JAVA" />
       </configuration>
