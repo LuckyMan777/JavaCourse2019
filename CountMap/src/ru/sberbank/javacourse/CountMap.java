@@ -34,14 +34,13 @@ public class CountMap<K> {
         return map.get(key);
     }
 
-    public Map<? extends K, Integer> asMap() {
-        return (Map<? extends K, Integer>) map.clone();
+    public Map<K, Integer> asMap() {
+        HashMap<K, Integer> newMap = new HashMap<>();
+        copyTo(newMap);
+        return newMap;
     }
 
-    public void copyTo(Map<K, Integer> m2) {
-        for (K key : map.keySet()) {
-            if (!m2.containsKey(key)) m2.put(key, 0);
-            m2.put(key, m2.get(key) + map.get(key));
-        }
+    public void copyTo(Map<? super K, ? super Integer> m2) {
+        m2.putAll(map);
     }
 }
