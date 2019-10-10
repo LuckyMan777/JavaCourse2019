@@ -29,19 +29,6 @@ class CountMapTest {
     }
 
     @org.junit.jupiter.api.Test
-    void addAll() {
-        CountMap<Integer> m2 = new CountMap<>();
-        m2.add(5);
-        m2.add(6);
-        m2.add(5); // 5: 2
-        m2.add(6); // 6: 2
-        m.addAll(m2);
-        assertEquals(12, m.getCount(5));
-        assertEquals(14, m.getCount(6));
-        assertEquals(20, m.getCount(10));
-    }
-
-    @org.junit.jupiter.api.Test
     void count() {
         for (int i = 1; i < count; ++i) {
             assertEquals(i*2, m.getCount(i));
@@ -61,7 +48,7 @@ class CountMapTest {
         HashMap<Integer, Integer> m2 = (HashMap<Integer, Integer>) m.asMap();
         m.copyTo(m2);
         for (int i = 1; i < count; ++i) {
-            assertEquals(i*4, m2.get(i));
+            assertEquals(i*2, m2.get(i));
         }
     }
 }

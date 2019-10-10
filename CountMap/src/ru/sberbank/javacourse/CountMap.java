@@ -20,18 +20,14 @@ public class CountMap<K> {
         map.put(key, map.get(key) + count);
     }
 
-    public void addAll(CountMap<K> m2) {
-        for (K key : m2.map.keySet()) {
-            this.add(key, m2.getCount(key));
-        }
-    }
-
     public int remove(K key) {
-        return map.remove(key);
+        Integer count;
+        return (count = map.remove(key)) == null ? 0 : count;
     }
 
     public int getCount(K key) {
-        return map.get(key);
+        Integer count;
+        return (count = map.get(key)) == null ? 0 : count;
     }
 
     public Map<K, Integer> asMap() {
