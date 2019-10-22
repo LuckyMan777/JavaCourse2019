@@ -1,0 +1,12 @@
+{
+  "firstName": "firstname",
+  "lastName": "lastname",
+  "address": {
+    "city": "city",
+    "postalCode": 789456
+  },
+  "phonenumbers": [
+    "567-89",
+    "123-456"
+  ]
+}
