@@ -1,19 +1,7 @@
-package ru.sberbank.javacourse.threads;
+package ru.sberbank.javacourse.threads.classtask1;
 
 public class Example {
     static volatile boolean keepRunning = true;
-
-    public void run()
-    {
-        int x = 0;
-        while(keepRunning)
-            ++x;
-        System.out.println(x);
-    }
-
-    public void finish(){
-        keepRunning = false;
-    }
 
     public static void main(String[] args) throws InterruptedException {
         Example example = new Example();
@@ -34,6 +22,17 @@ public class Example {
         thread2.start();
         thread1.join();
         thread2.join();
+    }
+
+    public void run() {
+        int x = 0;
+        while (keepRunning)
+            ++x;
+        System.out.println(x);
+    }
+
+    public void finish() {
+        keepRunning = false;
     }
 
 }

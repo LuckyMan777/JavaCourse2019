@@ -1,4 +1,4 @@
-package ru.sberbank.javacourse.threads;
+package ru.sberbank.javacourse.threads.classtask1;
 
 public class Barrier {
     private final int threadCount;

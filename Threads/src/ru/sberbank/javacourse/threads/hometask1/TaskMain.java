@@ -1,7 +1,5 @@
 package ru.sberbank.javacourse.threads.hometask1;
 
-import java.util.concurrent.Callable;
-
 public class TaskMain {
 
     public static void main(String[] args) {
@@ -11,7 +9,7 @@ public class TaskMain {
             return "some result of computing";
         });
 
-        for (int i = 0; i < 20; ++i){
+        for (int i = 0; i < 20; ++i) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
