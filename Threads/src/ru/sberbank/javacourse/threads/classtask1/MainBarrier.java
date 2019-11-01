@@ -22,7 +22,6 @@ public class MainBarrier {
 
     public void run() throws InterruptedException {
         System.out.println("before barrier");
-        Thread.sleep(3000);
         barrier.await();
         System.out.println("after barrier");
     }
