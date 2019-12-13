@@ -6,31 +6,37 @@ public class Task<T> {
     private final Object lock = new Object();
     private T result;
     private Callable<? extends T> callable;
-    private RuntimeException exception_on_computing_callable;
+    private RuntimeException exceptionOnComputingCallable;
     private volatile boolean resultIsComputed = false;
-    private volatile boolean resultIsException = false;
+    private volatile boolean resultIsComputing = false;
 
     public Task(Callable<? extends T> callable) {
         this.callable = callable;
     }
 
-    public T get() {
-        synchronized (lock) {
-            if (resultIsComputed) {
-                return result;
+    public T get() throws InterruptedException {
+        if (resultIsComputed) {
+            return result;
+        }
+        if (resultIsComputing) {
+            synchronized (lock) {
+                lock.wait();
             }
-            if (resultIsException) {
-                throw exception_on_computing_callable;
-            }
+        } else {
+            resultIsComputing = true;
             try {
                 result = callable.call();
                 resultIsComputed = true;
-                lock.notifyAll();
+                synchronized (lock) {
+                    lock.notifyAll();
+                }
                 return result;
             } catch (Exception e) {
-                exception_on_computing_callable = new RuntimeException("Exception on computing callable", e);
-                resultIsException = true;
+                exceptionOnComputingCallable = new RuntimeException("Exception on computing callable", e);
             }
+        }
+        if (exceptionOnComputingCallable != null) {
+            throw exceptionOnComputingCallable;
         }
         return result;
     }

@@ -9,13 +9,18 @@ public class TaskMain {
             return "some result of computing";
         });
 
-        for (int i = 0; i < 20; ++i) {
+        for (int i = 0; i < 5; ++i) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("run thread " + Thread.currentThread().getId() + "...");
-                    String result = t.get();
-                    System.out.println("    in thread " + Thread.currentThread().getId() + " result = " + result);
+                    System.out.println("run thread " + Thread.currentThread().getName() + "...");
+                    String result = null;
+                    try {
+                        result = t.get();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("    in thread " + Thread.currentThread().getName() + " result = " + result);
                 }
             }).start();
         }
