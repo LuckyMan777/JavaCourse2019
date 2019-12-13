@@ -1,13 +1,13 @@
-package ru.sberbank.javacourse;
+package ru.sberbank.javacourse.timerproxy;
 
 import java.util.Map;
 import java.util.Random;
 
-public class TestMap implements ITestMap {
+public class CheckMapTime implements ICheckMapTime {
     private static final int COUNTER = 1000000;
 
     @Override
-    public void testAddInteger(Map<Integer, Integer> hm){
+    public void testAddInteger(Map<Integer, Integer> hm) {
         Random r = new Random();
         for (int i = 0; i < COUNTER; ++i) {
             hm.put(r.nextInt(), r.nextInt());
@@ -15,7 +15,7 @@ public class TestMap implements ITestMap {
     }
 
     @Override
-    public void testContainsInteger(Map<Integer, Integer> hm){
+    public void testContainsInteger(Map<Integer, Integer> hm) {
         Random r = new Random();
         for (int i = 0; i < COUNTER; ++i) {
             hm.containsKey(r.nextInt());

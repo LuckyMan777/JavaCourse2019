@@ -1,4 +1,4 @@
-package ru.sberbank.javacourse;
+package ru.sberbank.javacourse.timerproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
