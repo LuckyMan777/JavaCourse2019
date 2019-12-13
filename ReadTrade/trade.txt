@@ -1,4 +1,4 @@
 Trade: {
-    type={COMMODITY_SPOT}
-    price={125.84}
+    type={COMMODITY_SPOT}
+    price={125.84}
 }

@@ -1,3 +1,8 @@
+package com.company;
+
+import com.company.parsetrade.ParseTradeVar1;
+import com.company.parsetrade.ParseTradeVar2;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
