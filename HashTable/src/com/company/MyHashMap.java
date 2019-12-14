@@ -2,26 +2,26 @@ package com.company;
 
 public class MyHashMap<K, V> {
     public final KeyValueHolder<K, V> TOMBSTONE = new KeyValueHolder<>(null, null);
-    private final int initialCapacity = 100;
-    private final double loadFactor = 0.5;
-    private final int multiplier = 2;
+    private static final int INITIAL_CAPACITY = 100;
+    private static final double LOAD_FACTOR = 0.5;
+    private static final int MULTIPLIER = 2;
 
     private KeyValueHolder<K, V>[] table;
     private int size = 0;
 
 
     public MyHashMap() {
-        table = (KeyValueHolder<K, V>[]) new KeyValueHolder[initialCapacity];
+        table = (KeyValueHolder<K, V>[]) new KeyValueHolder[INITIAL_CAPACITY];
     }
 
     public MyHashMap(int size) {
-        table = (KeyValueHolder<K, V>[]) new KeyValueHolder[size * multiplier];
+        table = (KeyValueHolder<K, V>[]) new KeyValueHolder[size * MULTIPLIER];
     }
 
     private void reconstructTable() {
-        KeyValueHolder<K, V>[] newTable = (KeyValueHolder<K, V>[]) new KeyValueHolder[table.length * multiplier];
+        KeyValueHolder<K, V>[] newTable = (KeyValueHolder<K, V>[]) new KeyValueHolder[table.length * MULTIPLIER];
         for (KeyValueHolder<K, V> kvEntry : table) {
-            if ((kvEntry != null) && kvEntry != TOMBSTONE) {
+            if ((kvEntry != null) && (kvEntry != TOMBSTONE)) {
                 putToArray(kvEntry.getKey(), kvEntry.getValue(), newTable);
             }
         }
@@ -54,23 +54,23 @@ public class MyHashMap<K, V> {
     }
 
     public void put(K key, V value) {
-        if (size > table.length * loadFactor)
+        if (size > table.length * LOAD_FACTOR)
             reconstructTable();
         if (putToArray(key, value, table)) ++size;
     }
 
     public V get(K key) {
         int index = getNormalizedIndexInArray(key, table);
-        int firstTombstone = -1;
+        int firstTombstoneIndex = -1;
         while (table[index] != null) {
-            if ((table[index] == TOMBSTONE) && (firstTombstone == -1)) {
-                firstTombstone = index;
+            if ((table[index] == TOMBSTONE) && (firstTombstoneIndex == -1)) {
+                firstTombstoneIndex = index;
             }
             if ((table[index] != TOMBSTONE) && table[index].getKey().equals(key)) {
-                if (firstTombstone != -1) {
-                    table[firstTombstone] = table[index];
+                if (firstTombstoneIndex != -1) {
+                    table[firstTombstoneIndex] = table[index];
                     table[index] = TOMBSTONE;
-                    return table[firstTombstone].getValue();
+                    return table[firstTombstoneIndex].getValue();
                 }
                 return table[index].getValue();
             }
