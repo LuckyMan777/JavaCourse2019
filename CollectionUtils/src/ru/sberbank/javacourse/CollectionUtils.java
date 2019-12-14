@@ -24,7 +24,11 @@ public class CollectionUtils {
     }
 
     public static <T> List<T> limit(List<T> source, int size) {
-        return source.subList(0, Math.min(size, source.size()));
+        List<T> newList = newArrayList();
+        for (int i = 0; i < Math.min(size, source.size()); ++i){
+            newList.add(source.get(i));
+        }
+        return newList;
     }
 
     public static <T> void add(List<? super T> source, T o) {
