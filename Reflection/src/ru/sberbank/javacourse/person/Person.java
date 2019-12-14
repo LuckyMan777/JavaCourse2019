@@ -1,4 +1,4 @@
-package ru.sberbank.javacourse;
+package ru.sberbank.javacourse.person;
 
 import java.util.List;
 

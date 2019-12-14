@@ -1,5 +1,8 @@
 package ru.sberbank.javacourse;
 
+import ru.sberbank.javacourse.person.Address;
+import ru.sberbank.javacourse.person.Person;
+
 import java.io.IOException;
 import java.lang.reflect.Proxy;
 import java.util.*;

@@ -1,4 +1,4 @@
-package ru.sberbank.javacourse;
+package ru.sberbank.javacourse.person;
 
 public class Address {
     private final String city;
