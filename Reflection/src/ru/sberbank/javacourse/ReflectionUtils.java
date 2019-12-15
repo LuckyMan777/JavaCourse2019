@@ -18,14 +18,19 @@ public class ReflectionUtils {
         return names;
     }
 
-    public static Map<String, Object> getAllFieldValues(Object o) throws IllegalAccessException {
+    public static Map<String, Object> getAllFieldValues(Object o) {
         Map<String, Object> map = new HashMap<>();
         Class<?> superclass = o.getClass();
         while (superclass != null) {
             for (Field field : superclass.getDeclaredFields()) {
                 field.setAccessible(true);
-                Object value = field.get(o);
-                map.put(field.toString(), value);
+                Object value = null;
+                try {
+                    value = field.get(o);
+                } catch (IllegalAccessException e) {
+                    value = null;
+                }
+                map.put(field.getName(), value);
             }
             superclass = superclass.getSuperclass();
         }

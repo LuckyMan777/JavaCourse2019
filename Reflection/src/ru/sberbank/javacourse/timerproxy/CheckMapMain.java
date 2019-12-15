@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Main {
+public class CheckMapMain {
 
     private static void testMap() {
         CheckMapTime test = new CheckMapTime();
