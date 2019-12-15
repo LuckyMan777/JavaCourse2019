@@ -11,7 +11,6 @@ public class Semaphore {
 
     public void lock(){
         synchronized (lock) {
-            System.out.println("Try lock by " + Thread.currentThread().getId());
             ++currentThreadCount;
             if (currentThreadCount >= maxThreadCount){
                 try {
@@ -25,10 +24,8 @@ public class Semaphore {
 
     public void unlock(){
         synchronized (lock) {
-
             --currentThreadCount;
             lock.notify();
-            System.out.println("  Unlocked by " + Thread.currentThread().getId());
         }
     }
 }

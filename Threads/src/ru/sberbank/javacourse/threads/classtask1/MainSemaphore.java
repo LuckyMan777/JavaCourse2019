@@ -12,10 +12,12 @@ public class MainSemaphore {
     }
 
     private void run() {
+        System.out.println("Try lock by " + Thread.currentThread().getId());
         semaphore.lock();
         try {
             doRun();
         } finally {
+            System.out.println("  Unlocked by " + Thread.currentThread().getId());
             semaphore.unlock();
         }
     }
