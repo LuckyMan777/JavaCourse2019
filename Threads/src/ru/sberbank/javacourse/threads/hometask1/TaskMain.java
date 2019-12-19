@@ -9,7 +9,7 @@ public class TaskMain {
             return "some result of computing";
         });
 
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 5000; ++i) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
